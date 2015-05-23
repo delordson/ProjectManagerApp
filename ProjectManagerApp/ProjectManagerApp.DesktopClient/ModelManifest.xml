@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Documents>
+    <Document FullPath="C:\Users\delordsonadmin\Documents\Visual Studio 2013\Projects\BitBucket\ProjectManagerApp\ProjectManagerApp\ProjectManagerApp.DesktopClient\Properties\Client.lsml" Checksum="4BC3E43D342C35E465935C9D14C39DED6F41127854BEBEF5C71BAF398EA054F5" />
+    <Document FullPath="C:\Users\delordsonadmin\Documents\Visual Studio 2013\Projects\BitBucket\ProjectManagerApp\ProjectManagerApp\ProjectManagerApp.DesktopClient\Properties\Proxies.lsml" Checksum="C3EEC59078FA29E5056CE199A7CE48FD1370AB1C8F9847C05110163D92ACF9CB" />
+  </Documents>
+</ModelDocumentManifest>

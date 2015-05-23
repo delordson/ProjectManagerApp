@@ -1,0 +1,13 @@
+ProjectManagerApp.Server.Properties.Service.lsml
+ProjectManagerApp.Server.Properties.DataSources.ApplicationData.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.Projects.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.ProjectTasks.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.ProjectResources.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.Employees.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.ProjectResourceTasks.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.MyProjectAssignments.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.MyTasks.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.EmployeeSkills.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.Clients.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.ClientContacts.lsml
+ProjectManagerApp.Server.DataSources.ApplicationData.ProjectRisks.lsml

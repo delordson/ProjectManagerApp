@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication"
+  Version="1.0.0.0" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <ModuleNamespace
+      Namespace="LightSwitchApplication" />
+    <Partial
+      IsPrimary="True" />
+  </ServiceApplication.Attributes>
+  <EntityContainerGroup
+    Name="DataWorkspace">
+    <EntityContainerGroupProperty
+      Name="SecurityData"
+      EntityContainer="Microsoft.LightSwitch.Security:SecurityData">
+      <EntityContainerGroupProperty.Attributes>
+        <Generated />
+        <DisplayName
+          Value="Security Data" />
+        <Description
+          Value="Service that provides access to security-related data." />
+      </EntityContainerGroupProperty.Attributes>
+    </EntityContainerGroupProperty>
+    <EntityContainerGroupProperty
+      Name="ApplicationData"
+      EntityContainer="ApplicationData" />
+  </EntityContainerGroup>
+  <GlobalAttributeGroup
+    Name="LightSwitchServiceApplicationGroup">
+    <GlobalAttributeGroup.Attributes>
+      <AutomaticDisplayName
+        Expression="(\p{Ll})(\p{Lu})|_+"
+        Replacement="$1 $2" />
+    </GlobalAttributeGroup.Attributes>
+  </GlobalAttributeGroup>
+  <Permission
+    Name="CanEditClientContacts">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Client Contacts" />
+      <Description
+        Value="Can Edit Client Contacts" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditClients">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Clients" />
+      <Description
+        Value="Can Edit Clients" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditEmployees">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Employees" />
+      <Description
+        Value="Can Edit Employees" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditEmployeesSkills">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Employees Skills" />
+      <Description
+        Value="Can Edit Employees Skills" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditProjectResources">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Project Resources" />
+      <Description
+        Value="Can Edit Project Resources" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditProjectResourceTasks">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Project Resource Tasks" />
+      <Description
+        Value="Can Edit Project Resource Tasks" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditProjectRisks">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Project Risks" />
+      <Description
+        Value="Can Edit Project Risks" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditProjects">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Projects" />
+      <Description
+        Value="Can Edit Projects" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission
+    Name="CanEditProjectTasks">
+    <Permission.Attributes>
+      <DisplayName
+        Value="Can Edit Project Tasks" />
+      <Description
+        Value="Can Edit Project Tasks" />
+    </Permission.Attributes>
+  </Permission>
+</ServiceApplication>

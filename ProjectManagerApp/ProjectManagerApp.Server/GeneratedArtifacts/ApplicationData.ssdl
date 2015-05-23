@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ApplicationDataStore" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ApplicationDataStore">
+    <EntitySet Name="ClientContacts" EntityType="ApplicationDataStore.ClientContact" store:Type="Tables" Schema="dbo" Table="ClientContacts" />
+    <EntitySet Name="Clients" EntityType="ApplicationDataStore.Client" store:Type="Tables" Schema="dbo" Table="Clients" />
+    <EntitySet Name="Employees" EntityType="ApplicationDataStore.Employee" store:Type="Tables" Schema="dbo" Table="Employees" />
+    <EntitySet Name="EmployeeSkills" EntityType="ApplicationDataStore.EmployeeSkills" store:Type="Tables" Schema="dbo" Table="EmployeeSkills" />
+    <EntitySet Name="ProjectResources" EntityType="ApplicationDataStore.ProjectResource" store:Type="Tables" Schema="dbo" Table="ProjectResources" />
+    <EntitySet Name="ProjectResourceTasks" EntityType="ApplicationDataStore.ProjectResourceTask" store:Type="Tables" Schema="dbo" Table="ProjectResourceTasks" />
+    <EntitySet Name="ProjectRisks" EntityType="ApplicationDataStore.ProjectRisk" store:Type="Tables" Schema="dbo" Table="ProjectRisks" />
+    <EntitySet Name="Projects" EntityType="ApplicationDataStore.Project" store:Type="Tables" Schema="dbo" Table="Projects" />
+    <EntitySet Name="ProjectTasks" EntityType="ApplicationDataStore.ProjectTask" store:Type="Tables" Schema="dbo" Table="ProjectTasks" />
+    <AssociationSet Name="Client_Project" Association="ApplicationDataStore.Client_Project">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="ClientContact_Client" Association="ApplicationDataStore.ClientContact_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="ClientContact" EntitySet="ClientContacts" />
+    </AssociationSet>
+    <AssociationSet Name="Employee_ProjectResource" Association="ApplicationDataStore.Employee_ProjectResource">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="ProjectResource" EntitySet="ProjectResources" />
+    </AssociationSet>
+    <AssociationSet Name="Project_Employee" Association="ApplicationDataStore.Project_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeSkills_Employee" Association="ApplicationDataStore.EmployeeSkills_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeSkills" EntitySet="EmployeeSkills" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectResourceTask_ProjectResource" Association="ApplicationDataStore.ProjectResourceTask_ProjectResource">
+      <End Role="ProjectResource" EntitySet="ProjectResources" />
+      <End Role="ProjectResourceTask" EntitySet="ProjectResourceTasks" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectTask_Project" Association="ApplicationDataStore.ProjectTask_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectTask" EntitySet="ProjectTasks" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectResource_Project" Association="ApplicationDataStore.ProjectResource_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectResource" EntitySet="ProjectResources" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectRisk_Project" Association="ApplicationDataStore.ProjectRisk_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectRisk" EntitySet="ProjectRisks" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectResourceTask_ProjectTask" Association="ApplicationDataStore.ProjectResourceTask_ProjectTask">
+      <End Role="ProjectTask" EntitySet="ProjectTasks" />
+      <End Role="ProjectResourceTask" EntitySet="ProjectResourceTasks" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ClientContact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContactJobDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="ClientContact_Client" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ClientName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressLine4" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressLine5" Type="nvarchar" MaxLength="100" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="15" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="255" />
+    <Property Name="Website" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="EmployeeImage" Type="varbinary(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="EmployeeSkills">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Skill" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="SkillYears" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="EmployeeSkills_Employee" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectResource">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Resource_ProjectResource" Type="int" Nullable="false" />
+    <Property Name="ProjectResource_Project" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectResourceTask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="ProjectResourceTask_ProjectResource" Type="int" Nullable="false" />
+    <Property Name="ProjectResourceTask_ProjectTask" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectRisk">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RiskTitle" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="RiskDescription" Type="nvarchar(max)" />
+    <Property Name="ControlMeasures" Type="nvarchar(max)" />
+    <Property Name="Likelihood" Type="int" />
+    <Property Name="Impact" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="ProjectRisk_Project" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectReference" Type="nvarchar" Nullable="false" MaxLength="25" />
+    <Property Name="ProjectName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Prority" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Budget" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Client_Project" Type="int" Nullable="false" />
+    <Property Name="Project_Employee" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectTask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="DueDate" Type="datetime" Nullable="false" />
+    <Property Name="Priority" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PercentCompleted" Type="decimal" Nullable="false" Precision="18" Scale="9" />
+    <Property Name="DateStarted" Type="datetime" />
+    <Property Name="DateCompleted" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created" Type="datetimeoffset" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="Modified" Type="datetimeoffset" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="ProjectTask_Project" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="Client_Project">
+    <End Role="Client" Type="ApplicationDataStore.Client" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="Project" Type="ApplicationDataStore.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="Client_Project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientContact_Client">
+    <End Role="Client" Type="ApplicationDataStore.Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ClientContact" Type="ApplicationDataStore.ClientContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClientContact">
+        <PropertyRef Name="ClientContact_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Employee_ProjectResource">
+    <End Role="Employee" Type="ApplicationDataStore.Employee" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ProjectResource" Type="ApplicationDataStore.ProjectResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectResource">
+        <PropertyRef Name="Resource_ProjectResource" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Project_Employee">
+    <End Role="Employee" Type="ApplicationDataStore.Employee" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="Project" Type="ApplicationDataStore.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="Project_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeSkills_Employee">
+    <End Role="Employee" Type="ApplicationDataStore.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmployeeSkills" Type="ApplicationDataStore.EmployeeSkills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeSkills">
+        <PropertyRef Name="EmployeeSkills_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectResourceTask_ProjectResource">
+    <End Role="ProjectResource" Type="ApplicationDataStore.ProjectResource" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ProjectResourceTask" Type="ApplicationDataStore.ProjectResourceTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectResource">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectResourceTask">
+        <PropertyRef Name="ProjectResourceTask_ProjectResource" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectTask_Project">
+    <End Role="Project" Type="ApplicationDataStore.Project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectTask" Type="ApplicationDataStore.ProjectTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectTask">
+        <PropertyRef Name="ProjectTask_Project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectResource_Project">
+    <End Role="Project" Type="ApplicationDataStore.Project" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ProjectResource" Type="ApplicationDataStore.ProjectResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectResource">
+        <PropertyRef Name="ProjectResource_Project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectRisk_Project">
+    <End Role="Project" Type="ApplicationDataStore.Project" Multiplicity="1">
+      <OnDeleteAnnotation Action="Restrict" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ProjectRisk" Type="ApplicationDataStore.ProjectRisk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectRisk">
+        <PropertyRef Name="ProjectRisk_Project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectResourceTask_ProjectTask">
+    <End Role="ProjectTask" Type="ApplicationDataStore.ProjectTask" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectResourceTask" Type="ApplicationDataStore.ProjectResourceTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTask">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectResourceTask">
+        <PropertyRef Name="ProjectResourceTask_ProjectTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

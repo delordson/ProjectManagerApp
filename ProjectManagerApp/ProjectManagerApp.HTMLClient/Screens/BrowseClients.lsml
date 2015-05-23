@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application
+  Name="LightSwitchApplication.ProjectManagerApp.HTMLClient" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <Application.Attributes>
+    <Partial />
+  </Application.Attributes>
+  <Screen
+    Name="BrowseClients">
+    <Screen.Attributes>
+      <SaveChangesTo
+        EntityContainer="ApplicationData" />
+      <DisplayName
+        Value="Browse Clients" />
+    </Screen.Attributes>
+    <Screen.RootContentItem>
+      <ContentItem
+        Name="RootContentItem"
+        Kind="Screen"
+        View="Microsoft.LightSwitch.MobileWeb:Screen">
+        <ContentItem
+          Name="Tabs"
+          Kind="Group"
+          View="Microsoft.LightSwitch.MobileWeb:TabPages">
+          <ContentItem
+            Name="ClientList"
+            Kind="Group">
+            <ContentItem
+              Name="Search"
+              Kind="Value"
+              DataType=":String"
+              View="Microsoft.LightSwitch.MobileWeb:TextBox">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="BrowseClients/Properties[Search]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+            </ContentItem>
+            <ContentItem
+              Name="Client"
+              Kind="Collection"
+              DataType="CollectionView$Client"
+              View="Microsoft.LightSwitch.MobileWeb:Table">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="BrowseClients/Properties[Clients]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                Name="RowTemplate"
+                Kind="Details"
+                DataType="Client">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  Name="ClientName"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Client/Properties[ClientName]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="AddressLine2"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Street" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Client/Properties[AddressLine2]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="AddressLine3"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="City" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Client/Properties[AddressLine3]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="Email"
+                  Kind="Value"
+                  DataType="Microsoft.LightSwitch.Extensions:EmailAddress?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Client/Properties[Email]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="Website"
+                  Kind="Value"
+                  DataType="Microsoft.LightSwitch.Extensions:WebAddress?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Client/Properties[Website]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="!module/Methods[showAddEditClient]">
+                        <CallExpression.Attributes>
+                          <AssociatedCollection
+                            Collection="BrowseClients/Properties[Clients]" />
+                        </CallExpression.Attributes>
+                        <ArgumentExpression
+                          Parameter="Client">
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="BrowseClients/Properties[Clients]" />
+                            <MemberExpression
+                              Member="selectedItem" />
+                          </ChainExpression>
+                        </ArgumentExpression>
+                      </CallExpression>
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem.CommandItems>
+              <ContentItem
+                Name="AddClient"
+                Kind="Command">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Add" />
+                </ContentItem.Attributes>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression
+                          Target="!module/Methods[showAddEditClient]">
+                          <CallExpression.Attributes>
+                            <AssociatedCollection
+                              Collection="BrowseClients/Properties[Clients]" />
+                            <CreateNewEntity
+                              TargetParameter="!module/Methods[showAddEditClient]/Parameters[Client]" />
+                          </CallExpression.Attributes>
+                        </CallExpression>
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+            </ContentItem.CommandItems>
+          </ContentItem>
+          <ContentItem.PropertySources>
+            <ControlPropertySource
+              Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[BrowseOnly]">
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <ConstantExpression
+                    Value="True"
+                    ResultType=":Boolean" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ControlPropertySource>
+          </ContentItem.PropertySources>
+        </ContentItem>
+        <ContentItem
+          Name="Popups"
+          Kind="Group"
+          View="Microsoft.LightSwitch.MobileWeb:DialogPages" />
+      </ContentItem>
+    </Screen.RootContentItem>
+    <Screen.Methods>
+      <ScreenMethod
+        Name="showTab">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+        <ScreenMethodParameter
+          Name="tabName"
+          ParameterType=":String" />
+      </ScreenMethod>
+      <ScreenMethod
+        Name="showDialog">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+        <ScreenMethodParameter
+          Name="dialogName"
+          ParameterType=":String" />
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty
+        Name="Clients"
+        PageSize="45"
+        PropertyType="CollectionView$Client">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="ClientsQuery"
+            ReturnType="Client*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree>
+                <BinaryExpression
+                  NodeType="Or">
+                  <BinaryExpression.Left>
+                    <BinaryExpression
+                      NodeType="Or">
+                      <BinaryExpression.Left>
+                        <BinaryExpression
+                          NodeType="Or">
+                          <BinaryExpression.Left>
+                            <BinaryExpression
+                              NodeType="Or">
+                              <BinaryExpression.Left>
+                                <BinaryExpression
+                                  NodeType="Or">
+                                  <BinaryExpression.Left>
+                                    <BinaryExpression
+                                      NodeType="Or">
+                                      <BinaryExpression.Left>
+                                        <BinaryExpression
+                                          NodeType="Contains">
+                                          <BinaryExpression.Left>
+                                            <ChainExpression>
+                                              <MemberExpression
+                                                Member="Client/Properties[ClientName]" />
+                                            </ChainExpression>
+                                          </BinaryExpression.Left>
+                                          <BinaryExpression.Right>
+                                            <ParameterExpression
+                                              Parameter="searchParameter" />
+                                          </BinaryExpression.Right>
+                                        </BinaryExpression>
+                                      </BinaryExpression.Left>
+                                      <BinaryExpression.Right>
+                                        <BinaryExpression
+                                          NodeType="Contains">
+                                          <BinaryExpression.Left>
+                                            <ChainExpression>
+                                              <MemberExpression
+                                                Member="Client/Properties[AddressLine1]" />
+                                            </ChainExpression>
+                                          </BinaryExpression.Left>
+                                          <BinaryExpression.Right>
+                                            <ParameterExpression
+                                              Parameter="searchParameter" />
+                                          </BinaryExpression.Right>
+                                        </BinaryExpression>
+                                      </BinaryExpression.Right>
+                                    </BinaryExpression>
+                                  </BinaryExpression.Left>
+                                  <BinaryExpression.Right>
+                                    <BinaryExpression
+                                      NodeType="Contains">
+                                      <BinaryExpression.Left>
+                                        <ChainExpression>
+                                          <MemberExpression
+                                            Member="Client/Properties[AddressLine2]" />
+                                        </ChainExpression>
+                                      </BinaryExpression.Left>
+                                      <BinaryExpression.Right>
+                                        <ParameterExpression
+                                          Parameter="searchParameter" />
+                                      </BinaryExpression.Right>
+                                    </BinaryExpression>
+                                  </BinaryExpression.Right>
+                                </BinaryExpression>
+                              </BinaryExpression.Left>
+                              <BinaryExpression.Right>
+                                <BinaryExpression
+                                  NodeType="Contains">
+                                  <BinaryExpression.Left>
+                                    <ChainExpression>
+                                      <MemberExpression
+                                        Member="Client/Properties[AddressLine3]" />
+                                    </ChainExpression>
+                                  </BinaryExpression.Left>
+                                  <BinaryExpression.Right>
+                                    <ParameterExpression
+                                      Parameter="searchParameter" />
+                                  </BinaryExpression.Right>
+                                </BinaryExpression>
+                              </BinaryExpression.Right>
+                            </BinaryExpression>
+                          </BinaryExpression.Left>
+                          <BinaryExpression.Right>
+                            <BinaryExpression
+                              NodeType="Contains">
+                              <BinaryExpression.Left>
+                                <ChainExpression>
+                                  <MemberExpression
+                                    Member="Client/Properties[AddressLine4]" />
+                                </ChainExpression>
+                              </BinaryExpression.Left>
+                              <BinaryExpression.Right>
+                                <ParameterExpression
+                                  Parameter="searchParameter" />
+                              </BinaryExpression.Right>
+                            </BinaryExpression>
+                          </BinaryExpression.Right>
+                        </BinaryExpression>
+                      </BinaryExpression.Left>
+                      <BinaryExpression.Right>
+                        <BinaryExpression
+                          NodeType="Contains">
+                          <BinaryExpression.Left>
+                            <ChainExpression>
+                              <MemberExpression
+                                Member="Client/Properties[AddressLine5]" />
+                            </ChainExpression>
+                          </BinaryExpression.Left>
+                          <BinaryExpression.Right>
+                            <ParameterExpression
+                              Parameter="searchParameter" />
+                          </BinaryExpression.Right>
+                        </BinaryExpression>
+                      </BinaryExpression.Right>
+                    </BinaryExpression>
+                  </BinaryExpression.Left>
+                  <BinaryExpression.Right>
+                    <BinaryExpression
+                      NodeType="Contains">
+                      <BinaryExpression.Left>
+                        <ChainExpression>
+                          <MemberExpression
+                            Member="Client/Properties[PostCode]" />
+                        </ChainExpression>
+                      </BinaryExpression.Left>
+                      <BinaryExpression.Right>
+                        <ParameterExpression
+                          Parameter="searchParameter" />
+                      </BinaryExpression.Right>
+                    </BinaryExpression>
+                  </BinaryExpression.Right>
+                </BinaryExpression>
+              </QueryFilterExpressionTree>
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression
+                  Member="ApplicationData/Members[Clients]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+            <ScreenQueryDefinition.Parameters>
+              <QueryParameter
+                Name="searchParameter"
+                IsOptional="True"
+                ParameterType=":String?" />
+            </ScreenQueryDefinition.Parameters>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="BrowseClients/Properties[Clients]/Query">
+              <ArgumentExpression
+                Parameter="searchParameter">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="BrowseClients/Properties[Search]" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenProperty
+        Name="Search"
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+    </Screen.Properties>
+  </Screen>
+  <Application.Methods>
+    <ApplicationMethod
+      Name="showBrowseClients">
+      <ApplicationMethod.Attributes>
+        <ShowScreenMethod
+          TargetScreen="BrowseClients" />
+      </ApplicationMethod.Attributes>
+    </ApplicationMethod>
+  </Application.Methods>
+</Application>

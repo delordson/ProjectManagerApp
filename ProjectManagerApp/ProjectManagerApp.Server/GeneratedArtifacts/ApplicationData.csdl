@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="ClientContact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContactName" Type="Edm.String" MaxLength="100" />
+    <Property Name="ContactJobDescription" Type="Edm.String" MaxLength="255" />
+    <Property Name="Email" Type="Edm.String" MaxLength="255" />
+    <Property Name="Phone" Type="Edm.String" MaxLength="255" />
+    <Property Name="ClientContact_Client" Type="Edm.Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Client" Relationship="LightSwitchApplication.ClientContact_Client" ToRole="Client" FromRole="ClientContact" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientName" Type="Edm.String" Nullable="false" MaxLength="100" />
+    <Property Name="AddressLine1" Type="Edm.String" MaxLength="100" />
+    <Property Name="AddressLine2" Type="Edm.String" MaxLength="100" />
+    <Property Name="AddressLine3" Type="Edm.String" MaxLength="100" />
+    <Property Name="AddressLine4" Type="Edm.String" MaxLength="100" />
+    <Property Name="AddressLine5" Type="Edm.String" MaxLength="100" />
+    <Property Name="PostCode" Type="Edm.String" MaxLength="15" />
+    <Property Name="Email" Type="Edm.String" MaxLength="255" />
+    <Property Name="Phone1" Type="Edm.String" MaxLength="255" />
+    <Property Name="Phone2" Type="Edm.String" MaxLength="255" />
+    <Property Name="Fax" Type="Edm.String" MaxLength="255" />
+    <Property Name="Website" Type="Edm.String" MaxLength="255" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Projects" Relationship="LightSwitchApplication.Client_Project" ToRole="Project" FromRole="Client" />
+    <NavigationProperty Name="ClientContacts" Relationship="LightSwitchApplication.ClientContact_Client" ToRole="ClientContact" FromRole="Client" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="50" />
+    <Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="Edm.String" MaxLength="Max" />
+    <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="EmployeeImage" Type="Edm.Binary" MaxLength="Max" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="ProjectResources" Relationship="LightSwitchApplication.Employee_ProjectResource" ToRole="ProjectResource" FromRole="Employee" />
+    <NavigationProperty Name="Projects" Relationship="LightSwitchApplication.Project_Employee" ToRole="Project" FromRole="Employee" />
+    <NavigationProperty Name="EmployeeSkillsCollection" Relationship="LightSwitchApplication.EmployeeSkills_Employee" ToRole="EmployeeSkills" FromRole="Employee" />
+  </EntityType>
+  <EntityType Name="EmployeeSkills">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Skill" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="SkillYears" Type="Edm.Int32" Nullable="false" />
+    <Property Name="EmployeeSkills_Employee" Type="Edm.Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Employee" Relationship="LightSwitchApplication.EmployeeSkills_Employee" ToRole="Employee" FromRole="EmployeeSkills" />
+  </EntityType>
+  <EntityType Name="ProjectResource">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Resource_ProjectResource" Type="Edm.Int32" Nullable="false" />
+    <Property Name="ProjectResource_Project" Type="Edm.Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Employee" Relationship="LightSwitchApplication.Employee_ProjectResource" ToRole="Employee" FromRole="ProjectResource" />
+    <NavigationProperty Name="Project" Relationship="LightSwitchApplication.ProjectResource_Project" ToRole="Project" FromRole="ProjectResource" />
+    <NavigationProperty Name="ProjectResourceTasks" Relationship="LightSwitchApplication.ProjectResourceTask_ProjectResource" ToRole="ProjectResourceTask" FromRole="ProjectResource" />
+  </EntityType>
+  <EntityType Name="ProjectResourceTask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectResourceTask_ProjectResource" Type="Edm.Int32" Nullable="false" />
+    <Property Name="ProjectResourceTask_ProjectTask" Type="Edm.Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="AssignedTo" Relationship="LightSwitchApplication.ProjectResourceTask_ProjectResource" ToRole="ProjectResource" FromRole="ProjectResourceTask" />
+    <NavigationProperty Name="ProjectTask" Relationship="LightSwitchApplication.ProjectResourceTask_ProjectTask" ToRole="ProjectTask" FromRole="ProjectResourceTask" />
+  </EntityType>
+  <EntityType Name="ProjectRisk">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RiskTitle" Type="Edm.String" Nullable="false" MaxLength="100" />
+    <Property Name="RiskDescription" Type="Edm.String" MaxLength="Max" />
+    <Property Name="ControlMeasures" Type="Edm.String" MaxLength="Max" />
+    <Property Name="Likelihood" Type="Edm.Int32" />
+    <Property Name="Impact" Type="Edm.Int32" />
+    <Property Name="ProjectRisk_Project" Type="Edm.Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Project" Relationship="LightSwitchApplication.ProjectRisk_Project" ToRole="Project" FromRole="ProjectRisk" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectReference" Type="Edm.String" Nullable="false" MaxLength="25" />
+    <Property Name="ProjectName" Type="Edm.String" Nullable="false" MaxLength="100" />
+    <Property Name="Description" Type="Edm.String" MaxLength="Max" />
+    <Property Name="StartDate" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="EndDate" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="Prority" Type="Edm.String" Nullable="false" MaxLength="20" />
+    <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="20" />
+    <Property Name="Budget" Type="Edm.Decimal" Precision="18" Scale="2" />
+    <Property Name="Project_Employee" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Client_Project" Type="Edm.Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="ProjectTasks" Relationship="LightSwitchApplication.ProjectTask_Project" ToRole="ProjectTask" FromRole="Project" />
+    <NavigationProperty Name="ProjectResources" Relationship="LightSwitchApplication.ProjectResource_Project" ToRole="ProjectResource" FromRole="Project" />
+    <NavigationProperty Name="ProjectManager" Relationship="LightSwitchApplication.Project_Employee" ToRole="Employee" FromRole="Project" />
+    <NavigationProperty Name="Client" Relationship="LightSwitchApplication.Client_Project" ToRole="Client" FromRole="Project" />
+    <NavigationProperty Name="ProjectRisks" Relationship="LightSwitchApplication.ProjectRisk_Project" ToRole="ProjectRisk" FromRole="Project" />
+  </EntityType>
+  <EntityType Name="ProjectTask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="100" />
+    <Property Name="Description" Type="Edm.String" MaxLength="Max" />
+    <Property Name="DueDate" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="Priority" Type="Edm.String" Nullable="false" MaxLength="20" />
+    <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="20" />
+    <Property Name="PercentCompleted" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="9" />
+    <Property Name="DateStarted" Type="Edm.DateTime" />
+    <Property Name="DateCompleted" Type="Edm.DateTime" />
+    <Property Name="ProjectTask_Project" Type="Edm.Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Created" Type="Edm.DateTimeOffset" />
+    <Property Name="ModifiedBy" Type="Edm.String" MaxLength="255" />
+    <Property Name="Modified" Type="Edm.DateTimeOffset" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Project" Relationship="LightSwitchApplication.ProjectTask_Project" ToRole="Project" FromRole="ProjectTask" />
+    <NavigationProperty Name="ProjectResourceTasks" Relationship="LightSwitchApplication.ProjectResourceTask_ProjectTask" ToRole="ProjectResourceTask" FromRole="ProjectTask" />
+  </EntityType>
+  <Association Name="Client_Project">
+    <End Role="Client" Type="LightSwitchApplication.Client" Multiplicity="1" />
+    <End Role="Project" Type="LightSwitchApplication.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="Client_Project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientContact_Client">
+    <End Role="Client" Type="LightSwitchApplication.Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ClientContact" Type="LightSwitchApplication.ClientContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClientContact">
+        <PropertyRef Name="ClientContact_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Employee_ProjectResource">
+    <End Role="Employee" Type="LightSwitchApplication.Employee" Multiplicity="1" />
+    <End Role="ProjectResource" Type="LightSwitchApplication.ProjectResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectResource">
+        <PropertyRef Name="Resource_ProjectResource" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Project_Employee">
+    <End Role="Employee" Type="LightSwitchApplication.Employee" Multiplicity="1" />
+    <End Role="Project" Type="LightSwitchApplication.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="Project_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeSkills_Employee">
+    <End Role="Employee" Type="LightSwitchApplication.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmployeeSkills" Type="LightSwitchApplication.EmployeeSkills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeSkills">
+        <PropertyRef Name="EmployeeSkills_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectResourceTask_ProjectResource">
+    <End Role="ProjectResource" Type="LightSwitchApplication.ProjectResource" Multiplicity="1" />
+    <End Role="ProjectResourceTask" Type="LightSwitchApplication.ProjectResourceTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectResource">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectResourceTask">
+        <PropertyRef Name="ProjectResourceTask_ProjectResource" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectTask_Project">
+    <End Role="Project" Type="LightSwitchApplication.Project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectTask" Type="LightSwitchApplication.ProjectTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectTask">
+        <PropertyRef Name="ProjectTask_Project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectResource_Project">
+    <End Role="Project" Type="LightSwitchApplication.Project" Multiplicity="1" />
+    <End Role="ProjectResource" Type="LightSwitchApplication.ProjectResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectResource">
+        <PropertyRef Name="ProjectResource_Project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectRisk_Project">
+    <End Role="Project" Type="LightSwitchApplication.Project" Multiplicity="1" />
+    <End Role="ProjectRisk" Type="LightSwitchApplication.ProjectRisk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectRisk">
+        <PropertyRef Name="ProjectRisk_Project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectResourceTask_ProjectTask">
+    <End Role="ProjectTask" Type="LightSwitchApplication.ProjectTask" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProjectResourceTask" Type="LightSwitchApplication.ProjectResourceTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTask">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectResourceTask">
+        <PropertyRef Name="ProjectResourceTask_ProjectTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ApplicationData" m:IsDefaultEntityContainer="true">
+    <EntitySet Name="ClientContacts" EntityType="LightSwitchApplication.ClientContact" />
+    <EntitySet Name="Clients" EntityType="LightSwitchApplication.Client" />
+    <EntitySet Name="Employees" EntityType="LightSwitchApplication.Employee" />
+    <EntitySet Name="EmployeeSkills" EntityType="LightSwitchApplication.EmployeeSkills" />
+    <EntitySet Name="ProjectResources" EntityType="LightSwitchApplication.ProjectResource" />
+    <EntitySet Name="ProjectResourceTasks" EntityType="LightSwitchApplication.ProjectResourceTask" />
+    <EntitySet Name="ProjectRisks" EntityType="LightSwitchApplication.ProjectRisk" />
+    <EntitySet Name="Projects" EntityType="LightSwitchApplication.Project" />
+    <EntitySet Name="ProjectTasks" EntityType="LightSwitchApplication.ProjectTask" />
+    <AssociationSet Name="Client_Project" Association="LightSwitchApplication.Client_Project">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="ClientContact_Client" Association="LightSwitchApplication.ClientContact_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="ClientContact" EntitySet="ClientContacts" />
+    </AssociationSet>
+    <AssociationSet Name="Employee_ProjectResource" Association="LightSwitchApplication.Employee_ProjectResource">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="ProjectResource" EntitySet="ProjectResources" />
+    </AssociationSet>
+    <AssociationSet Name="Project_Employee" Association="LightSwitchApplication.Project_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeSkills_Employee" Association="LightSwitchApplication.EmployeeSkills_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeSkills" EntitySet="EmployeeSkills" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectResourceTask_ProjectResource" Association="LightSwitchApplication.ProjectResourceTask_ProjectResource">
+      <End Role="ProjectResource" EntitySet="ProjectResources" />
+      <End Role="ProjectResourceTask" EntitySet="ProjectResourceTasks" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectTask_Project" Association="LightSwitchApplication.ProjectTask_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectTask" EntitySet="ProjectTasks" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectResource_Project" Association="LightSwitchApplication.ProjectResource_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectResource" EntitySet="ProjectResources" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectRisk_Project" Association="LightSwitchApplication.ProjectRisk_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectRisk" EntitySet="ProjectRisks" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectResourceTask_ProjectTask" Association="LightSwitchApplication.ProjectResourceTask_ProjectTask">
+      <End Role="ProjectTask" EntitySet="ProjectTasks" />
+      <End Role="ProjectResourceTask" EntitySet="ProjectResourceTasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

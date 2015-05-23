@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping CdmEntityContainer="ApplicationData" StorageEntityContainer="ApplicationDataStore">
+    <EntitySetMapping Name="ClientContacts">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ClientContact)">
+        <MappingFragment StoreEntitySet="ClientContacts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="ContactJobDescription" ColumnName="ContactJobDescription" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ClientContact_Client" ColumnName="ClientContact_Client" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Client)">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="AddressLine4" ColumnName="AddressLine4" />
+          <ScalarProperty Name="AddressLine5" ColumnName="AddressLine5" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmployeeImage" ColumnName="EmployeeImage" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeSkills">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.EmployeeSkills)">
+        <MappingFragment StoreEntitySet="EmployeeSkills">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Skill" ColumnName="Skill" />
+          <ScalarProperty Name="SkillYears" ColumnName="SkillYears" />
+          <ScalarProperty Name="EmployeeSkills_Employee" ColumnName="EmployeeSkills_Employee" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectResources">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ProjectResource)">
+        <MappingFragment StoreEntitySet="ProjectResources">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Resource_ProjectResource" ColumnName="Resource_ProjectResource" />
+          <ScalarProperty Name="ProjectResource_Project" ColumnName="ProjectResource_Project" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectResourceTasks">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ProjectResourceTask)">
+        <MappingFragment StoreEntitySet="ProjectResourceTasks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProjectResourceTask_ProjectResource" ColumnName="ProjectResourceTask_ProjectResource" />
+          <ScalarProperty Name="ProjectResourceTask_ProjectTask" ColumnName="ProjectResourceTask_ProjectTask" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectRisks">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ProjectRisk)">
+        <MappingFragment StoreEntitySet="ProjectRisks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RiskTitle" ColumnName="RiskTitle" />
+          <ScalarProperty Name="RiskDescription" ColumnName="RiskDescription" />
+          <ScalarProperty Name="ControlMeasures" ColumnName="ControlMeasures" />
+          <ScalarProperty Name="Likelihood" ColumnName="Likelihood" />
+          <ScalarProperty Name="Impact" ColumnName="Impact" />
+          <ScalarProperty Name="ProjectRisk_Project" ColumnName="ProjectRisk_Project" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Project)">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProjectReference" ColumnName="ProjectReference" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Prority" ColumnName="Prority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Budget" ColumnName="Budget" />
+          <ScalarProperty Name="Project_Employee" ColumnName="Project_Employee" />
+          <ScalarProperty Name="Client_Project" ColumnName="Client_Project" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectTasks">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ProjectTask)">
+        <MappingFragment StoreEntitySet="ProjectTasks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PercentCompleted" ColumnName="PercentCompleted" />
+          <ScalarProperty Name="DateStarted" ColumnName="DateStarted" />
+          <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+          <ScalarProperty Name="ProjectTask_Project" ColumnName="ProjectTask_Project" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
